@@ -4,7 +4,7 @@ import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
 
-app = Flask(__name__, template_folder='formular')
+app = Flask(__name__, template_folder='.') 
 
 # Configuración básica
 app.config['SECRET_KEY'] = 'tu_clave_secreta_aqui'
