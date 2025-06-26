@@ -4,7 +4,7 @@ import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='formular')
 
 # Configuración básica
 app.config['SECRET_KEY'] = 'tu_clave_secreta_aqui'
@@ -13,7 +13,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 # Ruta principal que muestra el formulario
 @app.route('/')
 def index():
-    return render_template('formulario.html')
+    return render_template('index.html')  # Si tu archivo se llama index.html
 
 # Ruta para procesar el formulario
 @app.route('/procesar', methods=['POST'])
