@@ -1,0 +1,277 @@
+<!-- templates/formulario.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapieplatz Anfrage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .intro-text {
+            margin-bottom: 30px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .datenschutz-hinweis {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section h2 {
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            margin-right: 5px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .optional {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Herzlich Willkommen!</h1>
+        
+        <div class="intro-text">
+            Gerne unterstützen wir Sie bei der Suche nach einem Platz bei einem geeigneten Psychotherapeuten. 
+            Datenschutz ist uns hierbei sehr wichtig.
+        </div>
+        
+        <div class="datenschutz-hinweis">
+            Sie können die Einverständniserklärung zur Datenverarbeitung jederzeit widerrufen.<br>
+            Weitere Informationen entnehmen Sie bitte unserer Datenschutzerklärung.
+        </div>
+        
+        <p>Um Ihre Anfrage bearbeiten zu können, benötigen wir noch folgende Informationen:</p>
+        
+        <form id="terapiaForm">
+            <div class="form-section">
+                <h2>Daten zur Versicherung</h2>
+                
+                <div class="form-group">
+                    <label>Private Krankenversicherung</label>
+                    <select name="tipo_aseguradora" required>
+                        <option value="">Bitte auswählen</option>
+                        <option value="AOK">AOK</option>
+                        <option value="TK">Techniker Krankenkasse (TK)</option>
+                        <option value="DAK">DAK-Gesundheit</option>
+                        <option value="BARMER">BARMER</option>
+                        <option value="other">Andere</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Sind Sie Beamter und besteht somit Beihilfeanspruch?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="beamter_ja" name="es_beamter" value="Ja" required>
+                            <label for="beamter_ja">Ja</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="beamter_nein" name="es_beamter" value="Nein">
+                            <label for="beamter_nein">Nein</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Art der Versicherung</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="vollversicherung" name="tipo_seguro" value="Vollversicherung" required>
+                            <label for="vollversicherung">Vollversicherung</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="beamter_beihilfe" name="tipo_seguro" value="Beamter mit Beihilfeanspruch">
+                            <label for="beamter_beihilfe">Beamter mit Beihilfeanspruch</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numero_seguro">Versicherungs-, bzw. Service-Nr.</label>
+                    <input type="text" id="numero_seguro" name="numero_seguro" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Daten</h2>
+                
+                <div class="form-group">
+                    <label for="anrede">Anrede</label>
+                    <select id="anrede" name="anrede" required>
+                        <option value="">Bitte auswählen</option>
+                        <option value="Herr">Herr</option>
+                        <option value="Frau">Frau</option>
+                        <option value="Divers">Divers</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="titulo">Titel <span class="optional">(optional)</span></label>
+                    <input type="text" id="titulo" name="titulo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="vorname">Vorname</label>
+                    <input type="text" id="vorname" name="vorname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nachname">Nachname</label>
+                    <input type="text" id="nachname" name="nachname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="geburtsdatum">Geburtsdatum</label>
+                    <input type="date" id="geburtsdatum" name="geburtsdatum" required placeholder="dd/mm/aaaa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="strasse">Straße und Hausnummer</label>
+                    <input type="text" id="strasse" name="strasse" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postleitzahl">Postleitzahl</label>
+                    <input type="text" id="postleitzahl" name="postleitzahl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ort">Ort:</label>
+                    <input type="text" id="ort" name="ort" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefon_mobil">Telefonnummer Mobil <span class="optional">(optional)</span></label>
+                    <input type="tel" id="telefon_mobil" name="telefon_mobil">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefon_festnetz">Telefonnummer Festnetz <span class="optional">(optional)</span></label>
+                    <input type="tel" id="telefon_festnetz" name="telefon_festnetz">
+                </div>
+            </div>
+            
+            <button type="submit">Anfrage absenden</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('terapiaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            fetch('/procesar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(new FormData(this))
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    alert('Vielen Dank für Ihre Anfrage! Wir werden uns bald bei Ihnen melden.');
+                    document.getElementById('terapiaForm').reset();
+                } else {
+                    alert('Es gab ein Problem: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Ein Fehler ist aufgetreten: ' + error);
+            });
+        });
+    </script>
+</body>
+</html>
