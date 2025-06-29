@@ -59,3 +59,10 @@ if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)
+
+
+# Conexión a Odoo 
+ODOO_URL = "https://terapi.odoo.com"  # ← Tu dominio de Odoo 
+ODOO_DB = "terapi"                   # ← Nombre de tu base de datos 
+ODOO_USER = "api_formulario@tudominio.com"  # ← Usuario API 
+ODOO_PASSWORD = "Adriana96."         # ← Contraseña del usuario API
