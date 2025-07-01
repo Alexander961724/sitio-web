@@ -55,7 +55,7 @@ def conectar_odoo():
 
 @app.route('/')
 def index():
-    return render_template('formulario.html')
+    return render_template('index.html')
 
 @app.route('/procesar', methods=['POST'])
 def procesar_formulario():
